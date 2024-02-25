@@ -1,39 +1,37 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Employee {
-    //String[] arrFio = {"Ivan", "Petr", "Kolya", "Vasia", "Alex"};
-    //int[] arrDep = {1, 2, 3, 4, 5};
-    //int[] arrSalary = {44000, 39000, 57000, 83000, 54000};
-    String[] arrFio = new String[10];
-    int[] arrDep = new int[10];
-    int[] arrSalary = new int[10];
-
-    public Employee(String fio, int dep, int salary, int i) {
-        arrFio[i] = fio;
-        arrDep[i] = dep;
-        arrSalary[i] = salary;
+    //String[] arrFio = new String[10];
+    //int[] arrDep = new int[10];
+    //int[] arrSalary = new int[10];
+    private String fio;
+    private int dep, salary;
+    int id = 0;
+    public Employee(String fio, int dep, int salary) {
+        this.fio = fio;
+        this.dep = dep;
+        this.salary = salary;
+        id++;
     }
 
-    public String getFio(int i) {
-        return this.arrFio[i];
+    public String getFio() {
+        return this.fio;
     }
 
-    public int getDep(int i) {
-        return this.arrDep[i];
+    public int getDep() {
+        return this.dep;
     }
-
-    public int getSalary(int i) {
-        return this.arrSalary[i];
+    public int getSalary() {
+        return this.salary;
     }
-
-    public int setArrDep(int i, int department) {
-        this.arrDep[i] = department;
-        return this.arrDep[i];
+    public int setDep(int dep) {
+        this.dep = dep;
+        return this.dep;
     }
-
-    public int setArrSalary(int i, int salary) {
-        this.arrSalary[i] = salary;
-        return this.arrSalary[i];
+    public int setSalary(int salary) {
+        this.salary = salary;
+        return this.salary;
     }
 
     @Override
@@ -41,14 +39,11 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Arrays.equals(arrFio, employee.arrFio) && Arrays.equals(arrDep, employee.arrDep) && Arrays.equals(arrSalary, employee.arrSalary);
+        return dep == employee.dep && salary == employee.salary && Objects.equals(fio, employee.fio);
     }
 
     @Override
     public int hashCode() {
-        int result = Arrays.hashCode(arrFio);
-        result = 31 * result + Arrays.hashCode(arrDep);
-        result = 31 * result + Arrays.hashCode(arrSalary);
-        return result;
+        return Objects.hash(fio, dep, salary);
     }
 }

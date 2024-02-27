@@ -1,6 +1,5 @@
 public abstract class Main {
-    static Employee[] employees = new Employee[10];
-    //static employees[0] = new Employee("Иванов Иван Иванович", 1, 43000);
+    private static Employee[] employees = new Employee[10];
     private static int id = 0;
     public static void main(String[] args) {
         employees[0] = new Employee("Иванов Иван Иванович", 1, 43000);
@@ -13,7 +12,7 @@ public abstract class Main {
         employees[7] = new Employee("Трубных Виктория Павловна", 3, 90000);
         employees[8] = new Employee("Мышкина Вита Михайловна", 4, 103000);
         employees[9] = new Employee("Безруков Степан Николаевич", 5, 55000);
-        getAllEmployees();
+        printAllEmployees();
         getSumSalaryMonth();
         findEmploeerWithMinSalary();
         findEmploeerWithMaxSalary();
@@ -21,7 +20,7 @@ public abstract class Main {
         getInitalsEmploees();
 
     }
-    public static void getAllEmployees() {
+    public static void printAllEmployees() {
         for (int i = 0; i < employees.length; i++) {
             System.out.println(i + ". " + employees[i].getFio() + " " + employees[i].getDep() + " " + employees[i].getSalary());
         }
@@ -32,28 +31,29 @@ public abstract class Main {
             summa += employees[i].getSalary();
         }
         return summa;
-        //System.out.println("\nСумма затрат на ЗП в месяц равна: " + summa + "\n");
     }
     public static int findEmploeerWithMinSalary() {
         int minimum = employees[0].getSalary();
+        int emp = 0;
         for (int i = 1; i < employees.length; i++) {
             if (minimum > employees[i].getSalary()) {
                 minimum = employees[i].getSalary();
+                emp = i;
             }
         }
-        return minimum;
-        //System.out.println("Минимальная зарплата у сотрудника равна: " + minimum + "\n");
+        return emp;
     }
 
     public static int findEmploeerWithMaxSalary() {
         int maximum = employees[0].getSalary();
+        int emp = 0;
         for (int i = 1; i < employees.length; i++) {
             if (maximum < employees[i].getSalary()) {
                 maximum = employees[i].getSalary();
+                emp = i;
             }
         }
-        return maximum;
-        //System.out.println("Минимальная зарплата у сотрудника равна: " + maximum + "\n");
+        return emp;
     }
     public static int findAvarageSalaryOfAllEmployeers() {
         return getSumSalaryMonth()/employees.length;

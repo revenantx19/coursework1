@@ -4,13 +4,15 @@ public class Employee {
     private String fio;
     private int dep;
     private int salary;
-    private static int id = 0;
+    private int id = 0;
+    private static int idGenerator = 0;
 
     public Employee(String fio, int dep, int salary) {
         this.fio = fio;
         this.dep = dep;
         this.salary = salary;
-        id++;
+        idGenerator++;
+        id = idGenerator;
     }
 
     public String getFio() {
@@ -34,12 +36,11 @@ public class Employee {
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-        Employee id = (Employee) other;
-        return id.equals(Employee.id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id;
     }
 
     @Override

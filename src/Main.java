@@ -32,28 +32,26 @@ public abstract class Main {
         }
         return summa;
     }
-    public static int findEmploeerWithMinSalary() {
+    public static String findEmploeerWithMinSalary() {
         int minimum = employees[0].getSalary();
         int emp = 0;
         for (int i = 1; i < employees.length; i++) {
             if (minimum > employees[i].getSalary()) {
-                minimum = employees[i].getSalary();
                 emp = i;
             }
         }
-        return emp;
+        return employees[emp].getFio();
     }
 
-    public static int findEmploeerWithMaxSalary() {
+    public static String findEmploeerWithMaxSalary() {
         int maximum = employees[0].getSalary();
         int emp = 0;
         for (int i = 1; i < employees.length; i++) {
             if (maximum < employees[i].getSalary()) {
-                maximum = employees[i].getSalary();
                 emp = i;
             }
         }
-        return emp;
+        return employees[emp].getFio();
     }
     public static int findAvarageSalaryOfAllEmployeers() {
         return getSumSalaryMonth()/employees.length;

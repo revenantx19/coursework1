@@ -19,6 +19,7 @@ public abstract class Main {
         findAvarageSalaryOfAllEmployeers();
         getInitalsEmploees();
 
+
     }
     public static void printAllEmployees() {
         for (int i = 0; i < employees.length; i++) {
